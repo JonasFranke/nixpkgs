@@ -20,20 +20,20 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "noriskclient-launcher";
-  version = "0.5.22";
+  version = "0.6.1";
 
   src = fetchFromGitHub {
     owner = "NoRiskClient";
     repo = "noriskclient-launcher";
     rev = "refs/tags/v${version}";
-    hash = "sha256-nM8yO7UYpSN8iC8DWbpUmrQHTERiqve2AwUt0w/bOTk=";
+    hash = "sha256-0QiTU9IET10FFXFuDP00ItWaoa3KjtiuTum53LTHLEY=";
   };
 
   npmDeps = fetchNpmDeps {
     name = "${pname}-${version}-npm-deps";
     inherit src;
     forceGitDeps = true;
-    hash = "sha256-tk/pZlub+rRDgEB51FA+MmXl6ihoFqBXGc8GaLP8Hu4=";
+    hash = "";
   };
 
   forceGitDeps = true;
@@ -43,7 +43,7 @@ rustPlatform.buildRustPackage rec {
   cargoRoot = "src-tauri";
 
   useFetchCargoVendor = true;
-  cargoHash = "sha256-rm0s4GD+aSI9ilfY+8yrR1uuiNC1C9P7BnaEnCCTBQQ=";
+  cargoHash = "";
 
   buildAndTestSubdir = cargoRoot;
 
