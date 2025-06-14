@@ -3,11 +3,14 @@
   fetchFromGitHub,
 
   fetchYarnDeps,
-  npmHooks,
+  yarnHooks,
   nodejs,
+  yarn,
+  typescript,
+  vite,
 
   rustPlatform,
-  cargo-tauri_1,
+  cargo-tauri,
 
   pkg-config,
   wrapGAppsHook3,
@@ -32,7 +35,7 @@ rustPlatform.buildRustPackage rec {
   yarnDeps = fetchYarnDeps {
     name = "${pname}-${version}-yarn-deps";
     inherit src;
-    hash = "";
+    hash = "sha256-MEdT/1jPtt9PIMGzBaiji67UUqwDi+vF//w9cAvtOBk=";
   };
 
   forceGitDeps = true;
@@ -42,15 +45,19 @@ rustPlatform.buildRustPackage rec {
   cargoRoot = "src-tauri";
 
   useFetchCargoVendor = true;
-  cargoHash = "";
+  cargoHash = "sha256-qKkRjYe/uPf9V/4QgMRSCu9u2G4Ghxe4meGxkuodkns=";
 
   buildAndTestSubdir = cargoRoot;
 
   nativeBuildInputs = [
-    npmHooks.npmConfigHook
     nodejs
+    yarn
+    typescript
+    vite
 
-    cargo-tauri_1.hook
+    yarnHooks.yarnConfigHook
+
+    cargo-tauri.hook
 
     pkg-config
     wrapGAppsHook3
