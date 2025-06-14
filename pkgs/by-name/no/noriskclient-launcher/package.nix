@@ -2,7 +2,7 @@
   lib,
   fetchFromGitHub,
 
-  fetchNpmDeps,
+  fetchYarnDeps,
   npmHooks,
   nodejs,
 
@@ -29,10 +29,9 @@ rustPlatform.buildRustPackage rec {
     hash = "sha256-0QiTU9IET10FFXFuDP00ItWaoa3KjtiuTum53LTHLEY=";
   };
 
-  npmDeps = fetchNpmDeps {
-    name = "${pname}-${version}-npm-deps";
+  yarnDeps = fetchYarnDeps {
+    name = "${pname}-${version}-yarn-deps";
     inherit src;
-    forceGitDeps = true;
     hash = "";
   };
 
